@@ -80,6 +80,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.subtraction_button.clicked.connect(self.click_subtraction_button)
         self.multiplication_button.clicked.connect(self.click_multiplication_button)
         self.division_button.clicked.connect(self.click_division_button)
+        self.percentage_button.clicked.connect(self.click_percentage_button)
         self.esc_button.clicked.connect(self.click_esc_button)
         self.ac_button.clicked.connect(self.click_ac_button)
 
@@ -146,8 +147,13 @@ class MainWindow(QtWidgets.QMainWindow):
         self.display.setText(self.math_expression)
 
     def click_equal_button(self):
-        self.math_expression = f"{eval(self.math_expression)}"
-        self.display.setText(self.math_expression)
+        if '%' in self.math_expression:
+            self.math_expression = str(functions.solve_percentage(self.math_expression))
+            self.display.setText(self.math_expression)
+
+        else:
+            self.math_expression = f"{eval(self.math_expression)}"
+            self.display.setText(self.math_expression)
 
     def click_addition_button(self):
         self.math_expression += '+'
@@ -166,7 +172,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.display.setText(self.math_expression)
 
     def click_percentage_button(self):
-        pass
+        self.math_expression += '%'
+        self.display.setText(self.math_expression)
 
     def click_esc_button(self):
         self.math_expression = self.math_expression.replace(f'{self.math_expression[-1]}', '')
