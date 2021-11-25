@@ -16,4 +16,4 @@ Por fim, caso deseja me contatar ou mandar sugestões, segue os links:
 <h4>Agradeço!!!<h4>
 
 <h2>Interface<h2>
-![](images/calculator_image.png)
+![](https://raw.githubusercontent.com/JeanCGPontes/Calculadora/main/images/calculator_image.png)
