@@ -1,6 +1,7 @@
 import functions
 
 from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtCore import Qt
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -12,58 +13,61 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
         self.setStyleSheet('background-color: rgb(241, 244, 243);')  # Window style setting.
 
-        number_button_style = ("""QPushButton {background-color: rgb(255, 255, 255);
+        self.number_button_style = ("""QPushButton {background-color: rgb(255, 255, 255);
                                                border-color: rgb(166, 166, 166);
                                                border-width: 1px;
                                                border-style:solid;
-                                               border-radius: 4;}
+                                               border-radius: 3;}
                                              
-                                  QPushButton:hover {background-color: rgb(235, 235, 235)}""")
-        style_of_math_operation_buttons = ("""QPushButton {background-color: rgba(13, 202, 174, 160);
+                                  QPushButton:hover {background-color: rgb(235, 235, 235)}
+                                  
+                                  QPushButton:pressed {{background-color: rgb(235, 235, 235)}}""")
+
+        self.style_of_math_operation_buttons = ("""QPushButton {background-color: rgba(13, 202, 174, 160);
                                                            border-color: rgb(166, 166, 166);
                                                            border-width: 1px;
                                                            border-style:solid;
-                                                           border-radius: 4;}
+                                                           border-radius: 3;}
 
                                               QPushButton:hover {background-color: rgb(13, 202, 174, 200)}""")
-        equal_button_style = ("""QPushButton {background-color: rgba(0, 135, 159, 180);
+        self.equal_button_style = ("""QPushButton {background-color: rgba(0, 135, 159, 180);
                                  border-color: rgb(166, 166, 166);
                                  border-width: 1px;
                                  border-style: solid;
-                                 border-radius: 4;}
+                                 border-radius: 3;}
 
                                  QPushButton:hover {background-color: rgba(0, 135, 159, 200);}""")
-        label_style = ("""background-color: rgb(252, 252, 252);
+        self.label_style = ("""background-color: rgb(252, 252, 252);
                           border-color: rgb(166, 166, 166);
                           border-width: 1px;
                           border-style:solid;
-                          border-radius: 5;""")
+                          border-radius: 3;""")
 
         self.math_expression = ''
 
         self.label_font = functions.get_font("Century Gothic", False, 24)
         self.button_font = functions.get_font("Miriam Libre", True, 16)
 
-        self.display = self.create_label('', 10, 10, 375, 70, label_style)
-        self.button_0 = self.create_button('0', 10, 350, 185, 60, number_button_style)
-        self.button_1 = self.create_button('1', 10, 285, 90, 60, number_button_style)
-        self.button_2 = self.create_button('2', 105, 285, 90, 60, number_button_style)
-        self.button_3 = self.create_button('3', 200, 285, 90, 60, number_button_style)
-        self.button_4 = self.create_button('4', 10, 220, 90, 60, number_button_style)
-        self.button_5 = self.create_button('5', 105, 220, 90, 60, number_button_style)
-        self.button_6 = self.create_button('6', 200, 220, 90, 60, number_button_style)
-        self.button_7 = self.create_button('7', 10, 155, 90, 60, number_button_style)
-        self.button_8 = self.create_button('8', 105, 155, 90, 60, number_button_style)
-        self.button_9 = self.create_button('9', 200, 155, 90, 60, number_button_style)
-        self.point_button = self.create_button('.', 200, 350, 90, 60, number_button_style)
-        self.equal_button = self.create_button('=', 295, 350, 90, 60, equal_button_style)
-        self.addition_button = self.create_button('+', 295, 285, 90, 60, style_of_math_operation_buttons)
-        self.subtraction_button = self.create_button('-', 295, 220, 90, 60, style_of_math_operation_buttons)
-        self.multiplication_button = self.create_button('*', 295, 155, 90, 60, style_of_math_operation_buttons)
-        self.division_button = self.create_button('/', 295, 90, 90, 60, style_of_math_operation_buttons)
-        self.percentage_button = self.create_button('%', 200, 90, 90, 60, style_of_math_operation_buttons)
-        self.esc_button = self.create_button('Esc', 105, 90, 90, 60, style_of_math_operation_buttons)
-        self.ac_button = self.create_button('AC', 10, 90, 90, 60, style_of_math_operation_buttons)
+        self.display = self.create_label('', 10, 10, 375, 70, self.label_style)
+        self.button_0 = self.create_button('0', 10, 350, 185, 60, self.number_button_style)
+        self.button_1 = self.create_button('1', 10, 285, 90, 60, self.number_button_style)
+        self.button_2 = self.create_button('2', 105, 285, 90, 60, self.number_button_style)
+        self.button_3 = self.create_button('3', 200, 285, 90, 60, self.number_button_style)
+        self.button_4 = self.create_button('4', 10, 220, 90, 60, self.number_button_style)
+        self.button_5 = self.create_button('5', 105, 220, 90, 60, self.number_button_style)
+        self.button_6 = self.create_button('6', 200, 220, 90, 60, self.number_button_style)
+        self.button_7 = self.create_button('7', 10, 155, 90, 60, self.number_button_style)
+        self.button_8 = self.create_button('8', 105, 155, 90, 60, self.number_button_style)
+        self.button_9 = self.create_button('9', 200, 155, 90, 60, self.number_button_style)
+        self.point_button = self.create_button('.', 200, 350, 90, 60, self.number_button_style)
+        self.equal_button = self.create_button('=', 295, 350, 90, 60, self.equal_button_style)
+        self.addition_button = self.create_button('+', 295, 285, 90, 60, self.style_of_math_operation_buttons)
+        self.subtraction_button = self.create_button('-', 295, 220, 90, 60, self.style_of_math_operation_buttons)
+        self.multiplication_button = self.create_button('*', 295, 155, 90, 60, self.style_of_math_operation_buttons)
+        self.division_button = self.create_button('/', 295, 90, 90, 60, self.style_of_math_operation_buttons)
+        self.percentage_button = self.create_button('%', 200, 90, 90, 60, self.style_of_math_operation_buttons)
+        self.esc_button = self.create_button('Esc', 105, 90, 90, 60, self.style_of_math_operation_buttons)
+        self.ac_button = self.create_button('AC', 10, 90, 90, 60, self.style_of_math_operation_buttons)
 
         self.button_0.clicked.connect(self.click_0_button)
         self.button_1.clicked.connect(self.click_1_button)
@@ -86,6 +90,30 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ac_button.clicked.connect(self.click_ac_button)
 
         self.show()  # Show all the widgets.
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key.Key_0: self.button_0.click()
+        elif event.key() == Qt.Key.Key_1: self.button_1.click()
+        elif event.key() == Qt.Key.Key_2: self.button_2.click()
+        elif event.key() == Qt.Key.Key_3: self.button_3.click()
+        elif event.key() == Qt.Key.Key_4: self.button_4.click()
+        elif event.key() == Qt.Key.Key_5: self.button_5.click()
+        elif event.key() == Qt.Key.Key_6: self.button_6.click()
+        elif event.key() == Qt.Key.Key_7: self.button_7.click()
+        elif event.key() == Qt.Key.Key_8: self.button_8.click()
+        elif event.key() == Qt.Key.Key_9: self.button_9.click()
+        elif event.key() == Qt.Key.Key_Delete: self.ac_button.click()
+        elif event.key() == Qt.Key.Key_Backspace: self.esc_button.click()
+        elif event.key() == Qt.Key.Key_Equal: self.equal_button.click()
+        elif event.key() == Qt.Key.Key_Enter: self.equal_button.click()
+        elif event.key() == Qt.Key.Key_Plus: self.addition_button.click()
+        elif event.key() == Qt.Key.Key_Minus: self.subtraction_button.click()
+        elif event.key() == Qt.Key.Key_Asterisk: self.multiplication_button.click()
+        elif event.key() == Qt.Key.Key_Slash: self.division_button.click()
+        elif event.key() == Qt.Key.Key_Percent: self.percentage_button.click()
+        elif event.key() == Qt.Key.Key_Period: self.point_button.click()
+
+        else: pass
 
     def create_label(self, content: str, x_position: int, y_position: int, width: int, height: int, style: str):
         label = QtWidgets.QLabel(self)
@@ -162,7 +190,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.display.setText(self.math_expression)
 
             except SyntaxError or ValueError:
-                self.display.setText('Error')
+                self.math_expression = ''
+                self.display.setText(self.math_expression)
 
     def click_addition_button(self):
         self.math_expression += '+'
@@ -186,7 +215,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def click_esc_button(self):
         try:
-            self.math_expression = self.math_expression.replace(f'{self.math_expression[-1]}', '')
+            self.math_expression = self.math_expression[:-1]
             self.display.setText(self.math_expression)
 
         except IndexError:
