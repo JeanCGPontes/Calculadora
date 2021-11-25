@@ -1,14 +1,15 @@
 import functions
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setGeometry(0, 0, 395, 450)  # Setting the window size and position.
+        self.setGeometry(350, 200, 395, 450)  # Setting the window size and position.
         self.setWindowTitle("Calculadora PyQt5")  # Window title setting.
+        self.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
         self.setStyleSheet('background-color: rgb(241, 244, 243);')  # Window style setting.
 
         number_button_style = ("""QPushButton {background-color: rgb(255, 255, 255);
@@ -148,12 +149,20 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def click_equal_button(self):
         if '%' in self.math_expression:
-            self.math_expression = str(functions.solve_percentage(self.math_expression))
-            self.display.setText(self.math_expression)
+            try:
+                self.math_expression = str(functions.solve_percentage(self.math_expression))
+                self.display.setText(self.math_expression)
+
+            except ValueError:
+                self.display.setText('Error')
 
         else:
-            self.math_expression = f"{eval(self.math_expression)}"
-            self.display.setText(self.math_expression)
+            try:
+                self.math_expression = f"{eval(self.math_expression)}"
+                self.display.setText(self.math_expression)
+
+            except SyntaxError or ValueError:
+                self.display.setText('Error')
 
     def click_addition_button(self):
         self.math_expression += '+'
@@ -176,8 +185,13 @@ class MainWindow(QtWidgets.QMainWindow):
         self.display.setText(self.math_expression)
 
     def click_esc_button(self):
-        self.math_expression = self.math_expression.replace(f'{self.math_expression[-1]}', '')
-        self.display.setText(self.math_expression)
+        try:
+            self.math_expression = self.math_expression.replace(f'{self.math_expression[-1]}', '')
+            self.display.setText(self.math_expression)
+
+        except IndexError:
+            self.math_expression = ''
+            self.display.setText(self.math_expression)
 
     def click_ac_button(self):
         self.math_expression = ''
