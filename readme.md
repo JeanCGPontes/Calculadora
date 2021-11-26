@@ -10,9 +10,12 @@ Quero agradecer ao canal [Eletrônica e Programação](https://www.youtube.com/c
 por me introduzir a biblioteca **PyQt5**, por meio deste [Curso](https://www.youtube.com/playlist?list=PLwsAoT89dh3qJ8JcprQ8AuHY8AGasvx4G).
 
 Por fim, caso deseja me contatar ou mandar sugestões, segue os links:
-* **Gmail** - [jeantrabalho.jt@gmail.com](mailto:jeanestudos.je@gmail.com)
-* **LinkedIn** - [Jean Carlos Pontes](https://www.linkedin.com/in/jeangoncalves2021/)
-* **Instagram** - [jean.pontes__](https://www.instagram.com/jean.pontes__/)
+
+<div> 
+  <a href="mailto:jeanestudos.je@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+  <a href="https://www.linkedin.com/in/jeangoncalves2021/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+  <a href="https://www.instagram.com/jean.pontes__/" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
+</div>
 
 <h4>Agradeço!!!</h4>
 
