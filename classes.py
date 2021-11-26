@@ -13,61 +13,37 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
         self.setStyleSheet('background-color: rgb(241, 244, 243);')  # Window style setting.
 
-        self.number_button_style = ("""QPushButton {background-color: rgb(255, 255, 255);
-                                               border-color: rgb(166, 166, 166);
-                                               border-width: 1px;
-                                               border-style:solid;
-                                               border-radius: 3;}
-                                             
-                                  QPushButton:hover {background-color: rgb(235, 235, 235)}
-                                  
-                                  QPushButton:pressed {{background-color: rgb(235, 235, 235)}}""")
-
-        self.style_of_math_operation_buttons = ("""QPushButton {background-color: rgba(13, 202, 174, 168);
-                                                           border-color: rgb(166, 166, 166);
-                                                           border-width: 1px;
-                                                           border-style:solid;
-                                                           border-radius: 3;}
-
-                                              QPushButton:hover {background-color: rgb(13, 202, 174, 200)}""")
-        self.equal_button_style = ("""QPushButton {background-color: rgba(0, 135, 159, 180);
-                                 border-color: rgb(166, 166, 166);
-                                 border-width: 1px;
-                                 border-style: solid;
-                                 border-radius: 3;}
-
-                                 QPushButton:hover {background-color: rgba(0, 135, 159, 200);}""")
-        self.label_style = ("""background-color: rgb(252, 252, 252);
-                          border-color: rgb(166, 166, 166);
-                          border-width: 1px;
-                          border-style:solid;
-                          border-radius: 3;""")
+        window_theme, number_button_style, style_of_math_operation_buttons, equal_button_style, label_style = functions.return_theme('light')
+        dark_theme = functions.return_theme('dark')
+        light_theme = functions.return_theme('light')
 
         self.math_expression = ''
 
         self.label_font = functions.get_font("Century Gothic", False, 24)
         self.button_font = functions.get_font("Miriam Libre", True, 16)
 
-        self.display = self.create_label('', 5, 5, 382, 88, self.label_style)
-        self.button_0 = self.create_button('0', 5, 378, 190, 68, self.number_button_style)
-        self.button_1 = self.create_button('1', 5, 308, 94, 68, self.number_button_style)
-        self.button_2 = self.create_button('2', 101, 308, 94, 68, self.number_button_style)
-        self.button_3 = self.create_button('3', 197, 308, 94, 68, self.number_button_style)
-        self.button_4 = self.create_button('4', 5, 238, 94, 68, self.number_button_style)
-        self.button_5 = self.create_button('5', 101, 238, 94, 68, self.number_button_style)
-        self.button_6 = self.create_button('6', 197, 238, 94, 68, self.number_button_style)
-        self.button_7 = self.create_button('7', 5, 168, 94, 68, self.number_button_style)
-        self.button_8 = self.create_button('8', 101, 168, 94, 68, self.number_button_style)
-        self.button_9 = self.create_button('9', 197, 168, 94, 68, self.number_button_style)
-        self.point_button = self.create_button('.', 197, 378, 94, 68, self.number_button_style)
-        self.equal_button = self.create_button('=', 293, 378, 94, 68, self.equal_button_style)
-        self.addition_button = self.create_button('+', 293, 308, 94, 68, self.style_of_math_operation_buttons)
-        self.subtraction_button = self.create_button('-', 293, 238, 94, 68, self.style_of_math_operation_buttons)
-        self.multiplication_button = self.create_button('*', 293, 168, 94, 68, self.style_of_math_operation_buttons)
-        self.division_button = self.create_button('/', 293, 98, 94, 68, self.style_of_math_operation_buttons)
-        self.percentage_button = self.create_button('%', 197, 98, 94, 68, self.style_of_math_operation_buttons)
-        self.esc_button = self.create_button('Esc', 101, 98, 94, 68, self.style_of_math_operation_buttons)
-        self.ac_button = self.create_button('AC', 5, 98, 94, 68, self.style_of_math_operation_buttons)
+        self.display = self.create_label('', 5, 5, 382, 88, label_style)
+        self.button_0 = self.create_button('0', 5, 378, 190, 68, number_button_style)
+        self.button_1 = self.create_button('1', 5, 308, 94, 68, number_button_style)
+        self.button_2 = self.create_button('2', 101, 308, 94, 68, number_button_style)
+        self.button_3 = self.create_button('3', 197, 308, 94, 68, number_button_style)
+        self.button_4 = self.create_button('4', 5, 238, 94, 68, number_button_style)
+        self.button_5 = self.create_button('5', 101, 238, 94, 68, number_button_style)
+        self.button_6 = self.create_button('6', 197, 238, 94, 68, number_button_style)
+        self.button_7 = self.create_button('7', 5, 168, 94, 68, number_button_style)
+        self.button_8 = self.create_button('8', 101, 168, 94, 68, number_button_style)
+        self.button_9 = self.create_button('9', 197, 168, 94, 68, number_button_style)
+        self.point_button = self.create_button('.', 197, 378, 94, 68, number_button_style)
+        self.equal_button = self.create_button('=', 293, 378, 94, 68, equal_button_style)
+        self.addition_button = self.create_button('+', 293, 308, 94, 68, style_of_math_operation_buttons)
+        self.subtraction_button = self.create_button('-', 293, 238, 94, 68, style_of_math_operation_buttons)
+        self.multiplication_button = self.create_button('*', 293, 168, 94, 68, style_of_math_operation_buttons)
+        self.division_button = self.create_button('/', 293, 98, 94, 68, style_of_math_operation_buttons)
+        self.percentage_button = self.create_button('%', 197, 98, 94, 68, style_of_math_operation_buttons)
+        self.esc_button = self.create_button('Esc', 101, 98, 94, 68, style_of_math_operation_buttons)
+        self.ac_button = self.create_button('AC', 5, 98, 94, 68, style_of_math_operation_buttons)
+
+        self.set_theme(light_theme)
 
         self.button_0.clicked.connect(self.click_0_button)
         self.button_1.clicked.connect(self.click_1_button)
@@ -225,3 +201,27 @@ class MainWindow(QtWidgets.QMainWindow):
     def click_ac_button(self):
         self.math_expression = ''
         self.display.setText(self.math_expression)
+
+    def set_theme(self, theme):
+        window_theme, number_button_style, style_of_math_operation_buttons, equal_button_style, label_style = theme
+        self.setStyleSheet(window_theme)
+        self.button_0.setStyleSheet(number_button_style)
+        self.button_1.setStyleSheet(number_button_style)
+        self.button_2.setStyleSheet(number_button_style)
+        self.button_3.setStyleSheet(number_button_style)
+        self.button_4.setStyleSheet(number_button_style)
+        self.button_5.setStyleSheet(number_button_style)
+        self.button_6.setStyleSheet(number_button_style)
+        self.button_7.setStyleSheet(number_button_style)
+        self.button_8.setStyleSheet(number_button_style)
+        self.button_9.setStyleSheet(number_button_style)
+        self.point_button.setStyleSheet(number_button_style)
+        self.ac_button.setStyleSheet(style_of_math_operation_buttons)
+        self.esc_button.setStyleSheet(style_of_math_operation_buttons)
+        self.percentage_button.setStyleSheet(style_of_math_operation_buttons)
+        self.division_button.setStyleSheet(style_of_math_operation_buttons)
+        self.multiplication_button.setStyleSheet(style_of_math_operation_buttons)
+        self.subtraction_button.setStyleSheet(style_of_math_operation_buttons)
+        self.addition_button.setStyleSheet(style_of_math_operation_buttons)
+        self.equal_button.setStyleSheet(equal_button_style)
+        self.display.setStyleSheet(label_style)
