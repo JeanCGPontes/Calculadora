@@ -7,7 +7,7 @@ from PyQt5.QtCore import Qt
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
-
+        self.setFixedSize(394, 466)
         self.setGeometry(350, 200, 391, 466)  # Setting the window size and position.
         self.setWindowTitle("Calculadora PyQt5")  # Window title setting.
         self.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
