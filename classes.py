@@ -45,25 +45,27 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.set_theme(light_theme)
 
-        self.button_0.clicked.connect(self.click_0_button)
-        self.button_1.clicked.connect(self.click_1_button)
-        self.button_2.clicked.connect(self.click_2_button)
-        self.button_3.clicked.connect(self.click_3_button)
-        self.button_4.clicked.connect(self.click_4_button)
-        self.button_5.clicked.connect(self.click_5_button)
-        self.button_6.clicked.connect(self.click_6_button)
-        self.button_7.clicked.connect(self.click_7_button)
-        self.button_8.clicked.connect(self.click_8_button)
-        self.button_9.clicked.connect(self.click_9_button)
-        self.point_button.clicked.connect(self.click_point_button)
+        self.button_0.clicked.connect(lambda: self.click_button('0'))
+        self.button_1.clicked.connect(lambda: self.click_button('1'))
+        self.button_2.clicked.connect(lambda: self.click_button('2'))
+        self.button_3.clicked.connect(lambda: self.click_button('3'))
+        self.button_4.clicked.connect(lambda: self.click_button('4'))
+        self.button_5.clicked.connect(lambda: self.click_button('5'))
+        self.button_6.clicked.connect(lambda: self.click_button('6'))
+        self.button_7.clicked.connect(lambda: self.click_button('7'))
+        self.button_8.clicked.connect(lambda: self.click_button('8'))
+        self.button_9.clicked.connect(lambda: self.click_button('9'))
+        self.point_button.clicked.connect(lambda: self.click_button('.'))
         self.equal_button.clicked.connect(self.click_equal_button)
-        self.addition_button.clicked.connect(self.click_addition_button)
-        self.subtraction_button.clicked.connect(self.click_subtraction_button)
-        self.multiplication_button.clicked.connect(self.click_multiplication_button)
-        self.division_button.clicked.connect(self.click_division_button)
-        self.percentage_button.clicked.connect(self.click_percentage_button)
+        self.addition_button.clicked.connect(lambda: self.click_button('+'))
+        self.subtraction_button.clicked.connect(lambda: self.click_button('-'))
+        self.multiplication_button.clicked.connect(lambda: self.click_button('*'))
+        self.division_button.clicked.connect(lambda: self.click_button('/'))
+        self.percentage_button.clicked.connect(lambda: self.click_button('%'))
         self.esc_button.clicked.connect(self.click_esc_button)
         self.ac_button.clicked.connect(self.click_ac_button)
+
+        self.update()
 
         self.show()  # Show all the widgets.
 
@@ -107,48 +109,8 @@ class MainWindow(QtWidgets.QMainWindow):
         button.setFont(self.button_font)
         return button
 
-    def click_0_button(self):
-        self.math_expression += '0'
-        self.display.setText(self.math_expression)
-
-    def click_1_button(self):
-        self.math_expression += '1'
-        self.display.setText(self.math_expression)
-
-    def click_2_button(self):
-        self.math_expression += '2'
-        self.display.setText(self.math_expression)
-
-    def click_3_button(self):
-        self.math_expression += '3'
-        self.display.setText(self.math_expression)
-
-    def click_4_button(self):
-        self.math_expression += '4'
-        self.display.setText(self.math_expression)
-
-    def click_5_button(self):
-        self.math_expression += '5'
-        self.display.setText(self.math_expression)
-
-    def click_6_button(self):
-        self.math_expression += '6'
-        self.display.setText(self.math_expression)
-
-    def click_7_button(self):
-        self.math_expression += '7'
-        self.display.setText(self.math_expression)
-
-    def click_8_button(self):
-        self.math_expression += '8'
-        self.display.setText(self.math_expression)
-
-    def click_9_button(self):
-        self.math_expression += '9'
-        self.display.setText(self.math_expression)
-
-    def click_point_button(self):
-        self.math_expression += '.'
+    def click_button(self, value: str):
+        self.math_expression += value
         self.display.setText(self.math_expression)
 
     def click_equal_button(self):
@@ -158,7 +120,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.display.setText(self.math_expression)
 
             except ValueError:
-                self.display.setText('Error')
+                self.math_expression = ''
+                self.display.setText(self.math_expression)
 
         else:
             try:
@@ -168,26 +131,6 @@ class MainWindow(QtWidgets.QMainWindow):
             except SyntaxError or ValueError:
                 self.math_expression = ''
                 self.display.setText(self.math_expression)
-
-    def click_addition_button(self):
-        self.math_expression += '+'
-        self.display.setText(self.math_expression)
-
-    def click_subtraction_button(self):
-        self.math_expression += '-'
-        self.display.setText(self.math_expression)
-
-    def click_multiplication_button(self):
-        self.math_expression += '*'
-        self.display.setText(self.math_expression)
-
-    def click_division_button(self):
-        self.math_expression += '/'
-        self.display.setText(self.math_expression)
-
-    def click_percentage_button(self):
-        self.math_expression += '%'
-        self.display.setText(self.math_expression)
 
     def click_esc_button(self):
         try:
