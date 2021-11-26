@@ -8,7 +8,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setGeometry(350, 200, 395, 450)  # Setting the window size and position.
+        self.setGeometry(350, 200, 391, 466)  # Setting the window size and position.
         self.setWindowTitle("Calculadora PyQt5")  # Window title setting.
         self.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
         self.setStyleSheet('background-color: rgb(241, 244, 243);')  # Window style setting.
@@ -23,7 +23,7 @@ class MainWindow(QtWidgets.QMainWindow):
                                   
                                   QPushButton:pressed {{background-color: rgb(235, 235, 235)}}""")
 
-        self.style_of_math_operation_buttons = ("""QPushButton {background-color: rgba(13, 202, 174, 160);
+        self.style_of_math_operation_buttons = ("""QPushButton {background-color: rgba(13, 202, 174, 168);
                                                            border-color: rgb(166, 166, 166);
                                                            border-width: 1px;
                                                            border-style:solid;
@@ -48,26 +48,26 @@ class MainWindow(QtWidgets.QMainWindow):
         self.label_font = functions.get_font("Century Gothic", False, 24)
         self.button_font = functions.get_font("Miriam Libre", True, 16)
 
-        self.display = self.create_label('', 10, 10, 375, 70, self.label_style)
-        self.button_0 = self.create_button('0', 10, 350, 185, 60, self.number_button_style)
-        self.button_1 = self.create_button('1', 10, 285, 90, 60, self.number_button_style)
-        self.button_2 = self.create_button('2', 105, 285, 90, 60, self.number_button_style)
-        self.button_3 = self.create_button('3', 200, 285, 90, 60, self.number_button_style)
-        self.button_4 = self.create_button('4', 10, 220, 90, 60, self.number_button_style)
-        self.button_5 = self.create_button('5', 105, 220, 90, 60, self.number_button_style)
-        self.button_6 = self.create_button('6', 200, 220, 90, 60, self.number_button_style)
-        self.button_7 = self.create_button('7', 10, 155, 90, 60, self.number_button_style)
-        self.button_8 = self.create_button('8', 105, 155, 90, 60, self.number_button_style)
-        self.button_9 = self.create_button('9', 200, 155, 90, 60, self.number_button_style)
-        self.point_button = self.create_button('.', 200, 350, 90, 60, self.number_button_style)
-        self.equal_button = self.create_button('=', 295, 350, 90, 60, self.equal_button_style)
-        self.addition_button = self.create_button('+', 295, 285, 90, 60, self.style_of_math_operation_buttons)
-        self.subtraction_button = self.create_button('-', 295, 220, 90, 60, self.style_of_math_operation_buttons)
-        self.multiplication_button = self.create_button('*', 295, 155, 90, 60, self.style_of_math_operation_buttons)
-        self.division_button = self.create_button('/', 295, 90, 90, 60, self.style_of_math_operation_buttons)
-        self.percentage_button = self.create_button('%', 200, 90, 90, 60, self.style_of_math_operation_buttons)
-        self.esc_button = self.create_button('Esc', 105, 90, 90, 60, self.style_of_math_operation_buttons)
-        self.ac_button = self.create_button('AC', 10, 90, 90, 60, self.style_of_math_operation_buttons)
+        self.display = self.create_label('', 5, 5, 382, 88, self.label_style)
+        self.button_0 = self.create_button('0', 5, 378, 190, 68, self.number_button_style)
+        self.button_1 = self.create_button('1', 5, 308, 94, 68, self.number_button_style)
+        self.button_2 = self.create_button('2', 101, 308, 94, 68, self.number_button_style)
+        self.button_3 = self.create_button('3', 197, 308, 94, 68, self.number_button_style)
+        self.button_4 = self.create_button('4', 5, 238, 94, 68, self.number_button_style)
+        self.button_5 = self.create_button('5', 101, 238, 94, 68, self.number_button_style)
+        self.button_6 = self.create_button('6', 197, 238, 94, 68, self.number_button_style)
+        self.button_7 = self.create_button('7', 5, 168, 94, 68, self.number_button_style)
+        self.button_8 = self.create_button('8', 101, 168, 94, 68, self.number_button_style)
+        self.button_9 = self.create_button('9', 197, 168, 94, 68, self.number_button_style)
+        self.point_button = self.create_button('.', 197, 378, 94, 68, self.number_button_style)
+        self.equal_button = self.create_button('=', 293, 378, 94, 68, self.equal_button_style)
+        self.addition_button = self.create_button('+', 293, 308, 94, 68, self.style_of_math_operation_buttons)
+        self.subtraction_button = self.create_button('-', 293, 238, 94, 68, self.style_of_math_operation_buttons)
+        self.multiplication_button = self.create_button('*', 293, 168, 94, 68, self.style_of_math_operation_buttons)
+        self.division_button = self.create_button('/', 293, 98, 94, 68, self.style_of_math_operation_buttons)
+        self.percentage_button = self.create_button('%', 197, 98, 94, 68, self.style_of_math_operation_buttons)
+        self.esc_button = self.create_button('Esc', 101, 98, 94, 68, self.style_of_math_operation_buttons)
+        self.ac_button = self.create_button('AC', 5, 98, 94, 68, self.style_of_math_operation_buttons)
 
         self.button_0.clicked.connect(self.click_0_button)
         self.button_1.clicked.connect(self.click_1_button)
