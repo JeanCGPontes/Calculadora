@@ -18,4 +18,4 @@ Por fim, caso deseja me contatar ou mandar sugestões, segue os links:
 
 <h2>Interface</h2>
 
-![calculator_image](https://user-images.githubusercontent.com/89170351/143572717-6e1670ad-fd4a-46b8-9317-38fcf37cd248.png)
+![calculator_image](https://user-images.githubusercontent.com/89170351/143574835-cfac15fd-6ba3-42e4-ac3d-0860def2f155.png)
