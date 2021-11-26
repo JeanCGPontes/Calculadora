@@ -1,4 +1,4 @@
-##Calculadora
+<h1>Calculadora</h1>
 
 Bem vindo, este projeto está sendo programadado em Python,
 e para a interface gráfica estou usando a biblioteca [PyQt5](https://doc.qt.io/qtforpython/). Até o
@@ -13,8 +13,9 @@ Por fim, caso deseja me contatar ou mandar sugestões, segue os links:
 * **Gmail** - [jeantrabalho.jt@gmail.com](mailto:jeanestudos.je@gmail.com)
 * **LinkedIn** - [Jean Carlos Pontes](https://www.linkedin.com/in/jeangoncalves2021/)
 * **Instagram** - [jean.pontes__](https://www.instagram.com/jean.pontes__/)
-####Agradeço!!!
 
-##Interface
+<h4>Agradeço!!!</h4>
+
+<h2>Interface</h2>
 
 ![calculator_image](https://user-images.githubusercontent.com/89170351/143572717-6e1670ad-fd4a-46b8-9317-38fcf37cd248.png)
