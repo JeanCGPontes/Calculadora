@@ -1,24 +1,20 @@
 import functions
-
-import sys
-
 from PyQt5 import QtWidgets, QtGui, QtCore
 
 
-class Calculator:
+class Calculator(QtWidgets.QMainWindow):
     def __init__(self):
-        self.applications = QtWidgets.QApplication(sys.argv)
-        self.window = QtWidgets.QMainWindow()
+        super().__init__()
 
         self.window_theme, self.number_button_style, self.style_of_math_operation_buttons, self.equal_button_style, self.label_style = functions.return_theme('light')
         self.label_font = functions.get_font("Century Gothic", False, 24)
         self.button_font = functions.get_font("Century Gothic", True, 14)
 
-        self.window.setWindowTitle('Calculadora PyQt5')
-        self.window.setGeometry(350, 200, 391, 490)
-        self.window.setFixedSize(391, 490)
-        self.window.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
-        self.applications.setStyleSheet(self.window_theme)
+        self.setWindowTitle('Calculadora PyQt5')
+        self.setGeometry(350, 200, 391, 490)
+        self.setFixedSize(391, 490)
+        self.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
+        self.setStyleSheet(self.window_theme)
 
         self.math_expression = ''
 
@@ -65,18 +61,17 @@ class Calculator:
 
         self.initGUI()
 
-        self.window.show()
-        sys.exit(self.applications.exec_())
+        self.show()
 
     def initGUI(self):
-        menu_bar = self.window.menuBar()
+        menu_bar = self.menuBar()
         menu_bar.setGeometry(0, 0, 391, 20)
         menu_bar.setFont(functions.get_font("Century Gothic", False, 10))
         menu_design = menu_bar.addMenu('&Tema')
 
-        dark_theme_action = QtWidgets.QAction('Escuro', self.window)
+        dark_theme_action = QtWidgets.QAction('Escuro', self)
         dark_theme_action.setFont(functions.get_font("Century Gothic", False, 10))
-        light_theme_action = QtWidgets.QAction('Claro', self.window)
+        light_theme_action = QtWidgets.QAction('Claro', self)
         light_theme_action.setFont(functions.get_font("Century Gothic", False, 10))
 
         menu_design.addAction(dark_theme_action)
@@ -110,7 +105,7 @@ class Calculator:
         else: pass
 
     def create_label(self, content: str, x_position: int, y_position: int, width: int, height: int, style: str):
-        label = QtWidgets.QLabel(self.window)
+        label = QtWidgets.QLabel(self)
         label.setText(content)
         label.setGeometry(x_position, y_position, width, height)
         label.setStyleSheet(style)
@@ -118,7 +113,7 @@ class Calculator:
         return label
 
     def create_button(self, content: str, x_position: int, y_position: int, width: int, height: int, style: str):
-        button = QtWidgets.QPushButton(self.window)
+        button = QtWidgets.QPushButton(self)
         button.setText(content)
         button.setGeometry(x_position, y_position, width, height)
         button.setStyleSheet(style)
@@ -163,7 +158,7 @@ class Calculator:
 
     def set_theme(self, theme):
         window_theme, number_button_style, style_of_math_operation_buttons, equal_button_style, label_style = functions.return_theme(theme)
-        self.window.setStyleSheet(window_theme)
+        self.setStyleSheet(window_theme)
         self.button_0.setStyleSheet(number_button_style)
         self.button_1.setStyleSheet(number_button_style)
         self.button_2.setStyleSheet(number_button_style)
@@ -185,4 +180,4 @@ class Calculator:
         self.equal_button.setStyleSheet(equal_button_style)
         self.display.setStyleSheet(label_style)
 
-        self.window.update()
+        self.update()
