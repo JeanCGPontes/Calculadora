@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>391</width>
-    <height>466</height>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -677,8 +677,35 @@ background-color: rgba(107, 197, 107, 200);}</string>
      <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <widget class="QMenu" name="menuDesign">
+    <property name="title">
+     <string>Design</string>
+    </property>
+    <widget class="QMenu" name="menuTema">
+     <property name="title">
+      <string>Tema</string>
+     </property>
+     <addaction name="actionLight"/>
+     <addaction name="actionDark"/>
+    </widget>
+    <addaction name="menuTema"/>
+   </widget>
+   <addaction name="menuDesign"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLight">
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </action>
+  <action name="actionDark">
+   <property name="text">
+    <string>Dark</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
