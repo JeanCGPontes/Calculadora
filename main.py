@@ -1,5 +1,8 @@
 import classes
+import sys
 
 
 if __name__ == '__main__':
-    classes.Calculator()
+    app = classes.QtWidgets.QApplication(sys.argv)
+    window = classes.Calculator()
+    sys.exit(app.exec_())
