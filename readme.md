@@ -21,4 +21,5 @@ Por fim, caso deseja me contatar ou mandar sugestões, segue os links:
 
 <h2>Interface</h2>
 
-![calculator_image](https://user-images.githubusercontent.com/89170351/143574835-cfac15fd-6ba3-42e4-ac3d-0860def2f155.png)
+![calculator_image_light](https://user-images.githubusercontent.com/89170351/144086865-cbc6bfda-64a6-4478-96af-d71b9aa484a4.png)
+![calculator_image_dark](https://user-images.githubusercontent.com/89170351/144086878-bdc41b25-c385-4af8-a7d8-c6bb006b2a83.png)
