@@ -1,49 +1,47 @@
 import functions
 
-from PyQt5 import QtWidgets, QtGui
-from PyQt5.QtCore import Qt
+import sys
+
+from PyQt5 import QtWidgets, QtGui, QtCore
 
 
-class MainWindow(QtWidgets.QMainWindow):
+class Calculator:
     def __init__(self):
-        super().__init__()
-        self.setFixedSize(394, 466)
-        self.setGeometry(350, 200, 391, 466)  # Setting the window size and position.
-        self.setWindowTitle("Calculadora PyQt5")  # Window title setting.
-        self.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
-        self.setStyleSheet('background-color: rgb(241, 244, 243);')  # Window style setting.
+        self.applications = QtWidgets.QApplication(sys.argv)
+        self.window = QtWidgets.QMainWindow()
 
-        window_theme, number_button_style, style_of_math_operation_buttons, equal_button_style, label_style = functions.return_theme('light')
-        dark_theme = functions.return_theme('dark')
-        light_theme = functions.return_theme('light')
+        self.window_theme, self.number_button_style, self.style_of_math_operation_buttons, self.equal_button_style, self.label_style = functions.return_theme('light')
+        self.label_font = functions.get_font("Century Gothic", False, 24)
+        self.button_font = functions.get_font("Century Gothic", True, 14)
+
+        self.window.setWindowTitle('Calculadora PyQt5')
+        self.window.setGeometry(350, 200, 391, 490)
+        self.window.setFixedSize(391, 490)
+        self.window.setWindowIcon(QtGui.QIcon('images/calculator_icon.png'))
+        self.applications.setStyleSheet(self.window_theme)
 
         self.math_expression = ''
 
-        self.label_font = functions.get_font("Century Gothic", False, 24)
-        self.button_font = functions.get_font("Miriam Libre", True, 16)
-
-        self.display = self.create_label('', 5, 5, 382, 88, label_style)
-        self.button_0 = self.create_button('0', 5, 378, 190, 68, number_button_style)
-        self.button_1 = self.create_button('1', 5, 308, 94, 68, number_button_style)
-        self.button_2 = self.create_button('2', 101, 308, 94, 68, number_button_style)
-        self.button_3 = self.create_button('3', 197, 308, 94, 68, number_button_style)
-        self.button_4 = self.create_button('4', 5, 238, 94, 68, number_button_style)
-        self.button_5 = self.create_button('5', 101, 238, 94, 68, number_button_style)
-        self.button_6 = self.create_button('6', 197, 238, 94, 68, number_button_style)
-        self.button_7 = self.create_button('7', 5, 168, 94, 68, number_button_style)
-        self.button_8 = self.create_button('8', 101, 168, 94, 68, number_button_style)
-        self.button_9 = self.create_button('9', 197, 168, 94, 68, number_button_style)
-        self.point_button = self.create_button('.', 197, 378, 94, 68, number_button_style)
-        self.equal_button = self.create_button('=', 293, 378, 94, 68, equal_button_style)
-        self.addition_button = self.create_button('+', 293, 308, 94, 68, style_of_math_operation_buttons)
-        self.subtraction_button = self.create_button('-', 293, 238, 94, 68, style_of_math_operation_buttons)
-        self.multiplication_button = self.create_button('*', 293, 168, 94, 68, style_of_math_operation_buttons)
-        self.division_button = self.create_button('/', 293, 98, 94, 68, style_of_math_operation_buttons)
-        self.percentage_button = self.create_button('%', 197, 98, 94, 68, style_of_math_operation_buttons)
-        self.esc_button = self.create_button('Esc', 101, 98, 94, 68, style_of_math_operation_buttons)
-        self.ac_button = self.create_button('AC', 5, 98, 94, 68, style_of_math_operation_buttons)
-
-        self.set_theme(light_theme)
+        self.display = self.create_label('', 5, 25, 382, 88, self.label_style)
+        self.button_0 = self.create_button('0', 5, 398, 190, 68, self.number_button_style)
+        self.button_1 = self.create_button('1', 5, 328, 94, 68, self.number_button_style)
+        self.button_2 = self.create_button('2', 101, 328, 94, 68, self.number_button_style)
+        self.button_3 = self.create_button('3', 197, 328, 94, 68, self.number_button_style)
+        self.button_4 = self.create_button('4', 5, 258, 94, 68, self.number_button_style)
+        self.button_5 = self.create_button('5', 101, 258, 94, 68, self.number_button_style)
+        self.button_6 = self.create_button('6', 197, 258, 94, 68, self.number_button_style)
+        self.button_7 = self.create_button('7', 5, 188, 94, 68, self.number_button_style)
+        self.button_8 = self.create_button('8', 101, 188, 94, 68, self.number_button_style)
+        self.button_9 = self.create_button('9', 197, 188, 94, 68, self.number_button_style)
+        self.point_button = self.create_button('.', 197, 398, 94, 68, self.number_button_style)
+        self.equal_button = self.create_button('=', 293, 398, 94, 68, self.equal_button_style)
+        self.addition_button = self.create_button('+', 293, 328, 94, 68, self.style_of_math_operation_buttons)
+        self.subtraction_button = self.create_button('-', 293, 258, 94, 68, self.style_of_math_operation_buttons)
+        self.multiplication_button = self.create_button('*', 293, 188, 94, 68, self.style_of_math_operation_buttons)
+        self.division_button = self.create_button('/', 293, 118, 94, 68, self.style_of_math_operation_buttons)
+        self.percentage_button = self.create_button('%', 197, 118, 94, 68, self.style_of_math_operation_buttons)
+        self.esc_button = self.create_button('Esc', 101, 118, 94, 68, self.style_of_math_operation_buttons)
+        self.ac_button = self.create_button('AC', 5, 118, 94, 68, self.style_of_math_operation_buttons)
 
         self.button_0.clicked.connect(lambda: self.click_button('0'))
         self.button_1.clicked.connect(lambda: self.click_button('1'))
@@ -65,36 +63,54 @@ class MainWindow(QtWidgets.QMainWindow):
         self.esc_button.clicked.connect(self.click_esc_button)
         self.ac_button.clicked.connect(self.click_ac_button)
 
-        self.update()
+        self.initGUI()
 
-        self.show()  # Show all the widgets.
+        self.window.show()
+        sys.exit(self.applications.exec_())
+
+    def initGUI(self):
+        menu_bar = self.window.menuBar()
+        menu_bar.setGeometry(0, 0, 391, 20)
+        menu_bar.setFont(functions.get_font("Century Gothic", False, 10))
+        menu_design = menu_bar.addMenu('&Tema')
+
+        dark_theme_action = QtWidgets.QAction('Escuro', self.window)
+        dark_theme_action.setFont(functions.get_font("Century Gothic", False, 10))
+        light_theme_action = QtWidgets.QAction('Claro', self.window)
+        light_theme_action.setFont(functions.get_font("Century Gothic", False, 10))
+
+        menu_design.addAction(dark_theme_action)
+        menu_design.addAction(light_theme_action)
+
+        dark_theme_action.triggered.connect(lambda: self.set_theme('dark'))
+        light_theme_action.triggered.connect(lambda: self.set_theme('light'))
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key.Key_0: self.button_0.click()
-        elif event.key() == Qt.Key.Key_1: self.button_1.click()
-        elif event.key() == Qt.Key.Key_2: self.button_2.click()
-        elif event.key() == Qt.Key.Key_3: self.button_3.click()
-        elif event.key() == Qt.Key.Key_4: self.button_4.click()
-        elif event.key() == Qt.Key.Key_5: self.button_5.click()
-        elif event.key() == Qt.Key.Key_6: self.button_6.click()
-        elif event.key() == Qt.Key.Key_7: self.button_7.click()
-        elif event.key() == Qt.Key.Key_8: self.button_8.click()
-        elif event.key() == Qt.Key.Key_9: self.button_9.click()
-        elif event.key() == Qt.Key.Key_Delete: self.ac_button.click()
-        elif event.key() == Qt.Key.Key_Backspace: self.esc_button.click()
-        elif event.key() == Qt.Key.Key_Equal: self.equal_button.click()
-        elif event.key() == Qt.Key.Key_Enter: self.equal_button.click()
-        elif event.key() == Qt.Key.Key_Plus: self.addition_button.click()
-        elif event.key() == Qt.Key.Key_Minus: self.subtraction_button.click()
-        elif event.key() == Qt.Key.Key_Asterisk: self.multiplication_button.click()
-        elif event.key() == Qt.Key.Key_Slash: self.division_button.click()
-        elif event.key() == Qt.Key.Key_Percent: self.percentage_button.click()
-        elif event.key() == Qt.Key.Key_Period: self.point_button.click()
+        if event.key() == QtCore.Qt.Key.Key_0: self.button_0.click()
+        elif event.key() == QtCore.Qt.Key.Key_1: self.button_1.click()
+        elif event.key() == QtCore.Qt.Key.Key_2: self.button_2.click()
+        elif event.key() == QtCore.Qt.Key.Key_3: self.button_3.click()
+        elif event.key() == QtCore.Qt.Key.Key_4: self.button_4.click()
+        elif event.key() == QtCore.Qt.Key.Key_5: self.button_5.click()
+        elif event.key() == QtCore.Qt.Key.Key_6: self.button_6.click()
+        elif event.key() == QtCore.Qt.Key.Key_7: self.button_7.click()
+        elif event.key() == QtCore.Qt.Key.Key_8: self.button_8.click()
+        elif event.key() == QtCore.Qt.Key.Key_9: self.button_9.click()
+        elif event.key() == QtCore.Qt.Key.Key_Delete: self.ac_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Backspace: self.esc_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Equal: self.equal_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Enter: self.equal_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Plus: self.addition_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Minus: self.subtraction_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Asterisk: self.multiplication_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Slash: self.division_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Percent: self.percentage_button.click()
+        elif event.key() == QtCore.Qt.Key.Key_Period: self.point_button.click()
 
         else: pass
 
     def create_label(self, content: str, x_position: int, y_position: int, width: int, height: int, style: str):
-        label = QtWidgets.QLabel(self)
+        label = QtWidgets.QLabel(self.window)
         label.setText(content)
         label.setGeometry(x_position, y_position, width, height)
         label.setStyleSheet(style)
@@ -102,7 +118,7 @@ class MainWindow(QtWidgets.QMainWindow):
         return label
 
     def create_button(self, content: str, x_position: int, y_position: int, width: int, height: int, style: str):
-        button = QtWidgets.QPushButton(self)
+        button = QtWidgets.QPushButton(self.window)
         button.setText(content)
         button.setGeometry(x_position, y_position, width, height)
         button.setStyleSheet(style)
@@ -146,8 +162,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.display.setText(self.math_expression)
 
     def set_theme(self, theme):
-        window_theme, number_button_style, style_of_math_operation_buttons, equal_button_style, label_style = theme
-        self.setStyleSheet(window_theme)
+        window_theme, number_button_style, style_of_math_operation_buttons, equal_button_style, label_style = functions.return_theme(theme)
+        self.window.setStyleSheet(window_theme)
         self.button_0.setStyleSheet(number_button_style)
         self.button_1.setStyleSheet(number_button_style)
         self.button_2.setStyleSheet(number_button_style)
@@ -168,3 +184,5 @@ class MainWindow(QtWidgets.QMainWindow):
         self.addition_button.setStyleSheet(style_of_math_operation_buttons)
         self.equal_button.setStyleSheet(equal_button_style)
         self.display.setStyleSheet(label_style)
+
+        self.window.update()
