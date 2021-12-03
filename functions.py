@@ -1,4 +1,5 @@
 from PyQt5.QtGui import QFont
+import sqlite3
 
 
 def get_font(font_name: str, bold: bool, font_size: int):
@@ -140,3 +141,41 @@ def return_theme(theme):
                                           border-radius: 3;""")
 
         return window_theme, number_button_style, style_of_math_operation_buttons, equal_button_style, label_style
+
+
+def connect_database(database_name: str):
+    database = sqlite3.connect(database_name)
+    return database
+
+
+def close_database(database):
+    database.close()
+
+
+def set_cursor(database):
+    cursor = database.cursor()
+    return cursor
+
+
+def insert_values(cursor, math_expression: str, result: str):
+    cursor.execute(f"INSERT INTO historic (math_expression, result) VALUES ('{math_expression}', '{result}')")
+
+
+def commit(database):
+    database.commit()
+
+
+def get_math_expressions(cursor):
+    cursor.execute(f"SELECT math_expression FROM historic")
+    values = cursor.fetchall()
+    return values
+
+
+def get_results(cursor):
+    cursor.execute(f"SELECT result FROM historic")
+    values = cursor.fetchall()
+    return values
+
+
+def delete_all_data(cursor):
+    cursor.execute("DELETE FROM historic")
